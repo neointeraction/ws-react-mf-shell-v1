@@ -1,5 +1,5 @@
 import React from 'react'
-import { HostProvider } from '../host.context/host.context'
+import { HostProvider } from '../store/store'
 
 
 const AppLayout = ({children}) => {

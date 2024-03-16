@@ -1,18 +1,9 @@
 import React, { useContext } from "react";
-import { hostContext } from "../host.context/host.context";
+// import { Context } from "../store/store";
 
-let hostValue;
 const useHost = () => {
-  hostValue = useContext(hostContext);
+  const hostValue = {}//useContext(Context);
   return hostValue;
-};
-
-useHost.getState = () => {
-  try {
-    return document.getElementById("app").current.host;
-  } catch (error) {
-    return {};
-  }
 };
 
 export default useHost;

@@ -14,6 +14,10 @@ module.exports = (_, argv) => ({
   devServer: {
     port: 8080,
     historyApiFallback: true,
+    client: {
+      overlay: false,
+    
+    }
   },
 
   module: {
@@ -44,7 +48,8 @@ module.exports = (_, argv) => ({
       name: "host",
       filename: "remoteEntry.js",
       exposes:{
-        './useHost': './src/hooks/useHost'
+        './store': './src/store/store.jsx',
+        './share': './src/share/index.js',
       },
       remotes: {},
       shared: {
