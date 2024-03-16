@@ -1,6 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { createBrowserRouter, createHashRouter } from "react-router-dom";
-import { loadModule, loadScript } from "../libs";
+import { useEffect } from "react";
+import { createHashRouter } from "react-router-dom";
 import * as loadApp from 'ngApp/loadApp';
 import  App from 'dashboard/App'
 export const DashboardPage = ()=>{
