@@ -51,7 +51,11 @@ module.exports = (_, argv) => ({
         './store': './src/store/store.jsx',
         './share': './src/share/index.js',
       },
-      remotes: {},
+      remotes: {
+        ngApp:'ngApp@http://localhost:4000/remoteEntry.js',
+        dashboard:'dashboard@http://localhost:3001/remoteEntry.js',
+        header:'header@http://localhost:3002/remoteEntry.js',
+      },
       shared: {
         ...deps,
         react: {

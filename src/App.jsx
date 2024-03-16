@@ -6,23 +6,17 @@ import { Dashboard, router } from "./routes/route";
 import { loadModule, loadScript } from "./libs";
 import { HostProvider } from "./store/store";
 import { RouterProvider } from "react-router-dom";
+import placeHolder from 'header/placeHolder'
 
 const App = () => {
   const headerRef = useRef(null);
   const footerRef = useRef(null);
 
   useEffect(() => {
-    loadScript(
-      "header",
-      "http://localhost:3002/remoteEntry.js"
-    ).then(() => {
-      loadModule("header", "placeHolder").then((e) => {
         try {
-          e.default(headerRef.current, "Header");
-          e.default(footerRef.current, "Footer");
+          placeHolder(headerRef.current, "Header");
+          placeHolder(footerRef.current, "Footer");
         } catch (error) {}
-      });
-    });
   }, []);
 
   return (

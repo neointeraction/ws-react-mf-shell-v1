@@ -1,42 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import { createBrowserRouter, createHashRouter } from "react-router-dom";
 import { loadModule, loadScript } from "../libs";
-
-export const Dashboard = ()=>{
-  const [Dashboard, setDashboard] = useState(null);
-  useEffect(()=>{
-    loadScript(
-      "dashboard",
-      "http://localhost:3001/remoteEntry.js"
-    ).then(() => {
-      loadModule("dashboard", "App").then((e) => {
-        setDashboard(e);
-      });
-    });
-
-  },[])
+import * as loadApp from 'ngApp/loadApp';
+import  App from 'dashboard/App'
+export const DashboardPage = ()=>{
   return <>
-  {Dashboard?.default&&Dashboard?.default()}
+  <App/>
   </>
 }
 
 const Settings = ()=>{
-  const ngAppRef = useRef(null);
-
   useEffect(()=>{
-    loadScript(
-      "ngApp",
-      "http://localhost:4000/remoteEntry.js"
-    ).then(() => {
-      loadModule("ngApp", "loadApp").then((e) => {
-        try {
-          e.mount()
-        } catch (error) {
-          console.log(error)
-        }
-      });
-    });
-
+    loadApp?.mount()
   },[])
 return <>
 <app-settings></app-settings>
@@ -50,7 +25,7 @@ export const router = createHashRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard/>,
+    element: <DashboardPage/>,
   },
   {
     path: "/settings",
